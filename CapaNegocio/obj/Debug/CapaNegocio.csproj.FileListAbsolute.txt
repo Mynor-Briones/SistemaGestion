@@ -1,0 +1,7 @@
+D:\PROGRAMACION\net\SistemaGestion\CapaNegocio\bin\Debug\CapaNegocio.dll
+D:\PROGRAMACION\net\SistemaGestion\CapaNegocio\bin\Debug\CapaNegocio.pdb
+D:\PROGRAMACION\net\SistemaGestion\CapaNegocio\bin\Debug\CapaDatos.dll
+D:\PROGRAMACION\net\SistemaGestion\CapaNegocio\bin\Debug\CapaDatos.pdb
+D:\PROGRAMACION\net\SistemaGestion\CapaNegocio\obj\Debug\CapaNegocio.csprojResolveAssemblyReference.cache
+D:\PROGRAMACION\net\SistemaGestion\CapaNegocio\obj\Debug\CapaNegocio.dll
+D:\PROGRAMACION\net\SistemaGestion\CapaNegocio\obj\Debug\CapaNegocio.pdb
