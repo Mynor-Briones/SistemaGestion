@@ -23,6 +23,18 @@ namespace CapaPresentacion
         public FrmInicio()
         {
             InitializeComponent();
+
+            if (pedidos == null)
+            {
+                pedidos = new Pedidos();
+                this.panelContenedor.Controls.Clear();
+                this.panelContenedor.Controls.Add(pedidos);
+            }
+            else
+            {
+                this.panelContenedor.Controls.Clear();
+                this.panelContenedor.Controls.Add(pedidos);
+            }
         }
 
         private void buttonClientes_Click(object sender, EventArgs e)

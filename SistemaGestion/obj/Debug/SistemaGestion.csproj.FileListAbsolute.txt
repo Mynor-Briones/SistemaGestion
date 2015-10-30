@@ -8,3 +8,7 @@ D:\PROGRAMACION\net\SistemaGestion\SistemaGestion\bin\Debug\CapaPresentacion.pdb
 D:\PROGRAMACION\net\SistemaGestion\SistemaGestion\obj\Debug\SistemaGestion.csprojResolveAssemblyReference.cache
 D:\PROGRAMACION\net\SistemaGestion\SistemaGestion\obj\Debug\SistemaGestion.exe
 D:\PROGRAMACION\net\SistemaGestion\SistemaGestion\obj\Debug\SistemaGestion.pdb
+D:\PROGRAMACION\net\SistemaGestion\SistemaGestion\bin\Debug\CapaNegocio.dll
+D:\PROGRAMACION\net\SistemaGestion\SistemaGestion\bin\Debug\CapaDatos.dll
+D:\PROGRAMACION\net\SistemaGestion\SistemaGestion\bin\Debug\CapaNegocio.pdb
+D:\PROGRAMACION\net\SistemaGestion\SistemaGestion\bin\Debug\CapaDatos.pdb

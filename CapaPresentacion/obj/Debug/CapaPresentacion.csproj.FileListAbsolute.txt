@@ -13,3 +13,5 @@ D:\PROGRAMACION\net\SistemaGestion\CapaPresentacion\obj\Debug\CapaPresentacion.P
 D:\PROGRAMACION\net\SistemaGestion\CapaPresentacion\obj\Debug\CapaPresentacion.Caja.resources
 D:\PROGRAMACION\net\SistemaGestion\CapaPresentacion\obj\Debug\CapaPresentacion.Pagos.resources
 D:\PROGRAMACION\net\SistemaGestion\CapaPresentacion\obj\Debug\CapaPresentacion.Pedidos.resources
+D:\PROGRAMACION\net\SistemaGestion\CapaPresentacion\bin\Debug\CapaDatos.dll
+D:\PROGRAMACION\net\SistemaGestion\CapaPresentacion\bin\Debug\CapaDatos.pdb

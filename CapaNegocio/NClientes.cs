@@ -1,0 +1,104 @@
+﻿using CapaDatos;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CapaNegocio
+{
+    public class NClientes
+    {
+        public static DataTable ListarClientes(int opcion)
+        {
+            return new DClientes().ListarClientes(opcion);
+        }      
+
+        //public static DataTable Mostrar(int parNumeroPagina, int parRegistrosPorPagina)
+        //{
+        //    return new DClientes().Mostrar(parNumeroPagina, parRegistrosPorPagina);
+        //}
+
+        public static DataTable Mostrar()
+        {
+            return new DClientes().Mostrar();
+        }
+
+        public static DataTable Buscar(int opcion, string nombre)
+        {
+            return new DClientes().Buscar(opcion, nombre);
+        }
+
+        public static DClientes BuscarPorId(int id)
+        {
+            return new DClientes().BuscarPorId(id);
+        }
+
+        public static int Tamaño(int parRegistrosPorPagina)
+        {
+            return new DClientes().Tamaño(parRegistrosPorPagina);
+        }
+        
+        
+
+        public static String Eliminar(int Id_Cliente)
+        {
+            DClientes clientes = new DClientes();
+
+            return clientes.Eliminar(Id_Cliente);
+        }
+
+        //public static String Insertar(String parNombre_Cliente, String parNombre_Contacto,
+        //    String parDireccion, String parCiudad, String parRegion, String parPais,
+        //    String parTelefono, String parFax, String parEmail)
+        //{
+        //    DClientes clientes = new DClientes();
+        //    clientes.Nombre_Cliente = parNombre_Cliente;
+        //    clientes.Apellido_Cliente = parNombre_Contacto;
+        //    clientes.Telefono = parTelefono;
+        //    clientes.Email = parEmail;
+
+        //    return clientes.Insertar(clientes);
+        //}
+
+        public static String Insertar(String nombre_cliente, String apellido_cliente,
+            String telefono, String email)
+        {
+            DClientes clientes = new DClientes();
+            //clientes.Nombre_Cliente = nombre_cliente;
+            //clientes.Apellido_Cliente = apellido_cliente;
+            //clientes.Telefono = telefono;
+            //clientes.Email = email;
+
+            return clientes.Insertar(clientes);
+        }
+
+        //public static String Editar(int parId_Cliente, String parNombre_Cliente, String parNombre_Contacto,
+        //    String parDireccion, String parCiudad, String parRegion, String parPais,
+        //    String parTelefono, String parFax, String parEmail)
+        //{
+        //    DClientes clientes = new DClientes();
+        //    clientes.Id_Cliente = parId_Cliente;
+        //    clientes.Nombre_Cliente = parNombre_Cliente;
+        //    clientes.Apellido_Cliente = parNombre_Contacto;
+        //    clientes.Telefono = parTelefono;
+        //    clientes.Email = parEmail;
+
+        //    return clientes.Editar(clientes);
+        //}
+
+        public static String Editar(int id_cliente, String nombre_cliente, String apellido_cliente,
+            String telefono, String email)
+        {
+            DClientes clientes = new DClientes();
+            clientes.Id_Cliente = id_cliente;
+            //clientes.Nombre_Cliente = nombre_cliente;
+            //clientes.Apellido_Cliente = apellido_cliente;
+            //clientes.Telefono = telefono;
+            //clientes.Email = email;
+
+            return clientes.Editar(clientes);
+        }
+    }
+}
