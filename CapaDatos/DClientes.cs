@@ -485,27 +485,58 @@ namespace CapaDatos
         //    return Respuesta;
         //}
 
-        public string Insertar(DClientes cliente)
+        public string Insertar(DClientes cliente, List<string> dir)
         {
             string Respuesta = "";
             SqlConnection SqlConexion = new SqlConnection();
+            SqlTransaction transaccion = null;
 
             try
             {
                 SqlConexion.ConnectionString = DConexion.CnBDEmpresa;
                 SqlConexion.Open();
 
+                transaccion = SqlConexion.BeginTransaction();
+
                 SqlCommand SqlComando = new SqlCommand();
+                SqlComando.Transaction = transaccion;
+
                 SqlComando.Connection = SqlConexion;
-                //SqlComando.CommandText = "insert into Clientes values('"+cliente.Nombre + "','" + cliente.Apellido + "'," + cliente.Telefono + ",'" + cliente.Email+ "')";
+
                 SqlComando.CommandType = CommandType.Text;
-                                
+
+                //direccion
+                //clinte
+                string query = "INSERT INTO [dbo].[DIRECCIONES] ([calle],[numero],[piso],[departamento],[ciudad]" +
+                               ",[provincia],[pais],[codigo_postal])" +
+                               "VALUES('" + dir[0].ToString() + "'," + int.Parse(dir[1].ToString()) + ",'" + dir[2].ToString() +
+                               "','" + dir[3].ToString() + "','" + dir[5].ToString() +
+                               "','" + dir[6].ToString() + "','" + dir[7].ToString() + "'," + dir[4].ToString() + 
+                               ") SELECT SCOPE_IDENTITY()";
+
+                SqlComando.CommandText = query;
+                int direccion = Convert.ToInt32(SqlComando.ExecuteScalar()); 
+                
+
+                //clinte
+                query = "INSERT INTO [dbo].[CLIENTES] ([nombre],[apellido],[razon_social],[telefono_fijo]" +
+                               ",[telefono_movil],[email],[cuil],[cuit],[direccion_id],[tipo_cliente_id])" +
+                               "VALUES('" + cliente.Nombre + "','" + cliente.Apellido + "','" + cliente.Razon_Social + 
+                               "','" + cliente.Telefono_Fijo + "','" + cliente.Telefono_Movil + 
+                               "','" + cliente.Email + "'," + cliente.Cuil + "," + cliente.Cuit + 
+                               "," + direccion + "," + cliente.Tipo_Cliente +")";
+
+                SqlComando.CommandText = query;                                
                 SqlComando.ExecuteNonQuery();
+
+                transaccion.Commit();
                 Respuesta = "Y";
             }
 
             catch (SqlException ex)
             {
+                transaccion.Rollback();
+
                 if (ex.Number == 8152)
                 {
                     Respuesta = "Has introducido demasiados caracteres en uno de los campos";

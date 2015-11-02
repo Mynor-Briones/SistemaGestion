@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="DClientes.cs" />
     <Compile Include="DConexion.cs" />
+    <Compile Include="DDireccion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

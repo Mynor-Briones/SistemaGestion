@@ -62,16 +62,21 @@ namespace CapaNegocio
         //    return clientes.Insertar(clientes);
         //}
 
-        public static String Insertar(String nombre_cliente, String apellido_cliente,
-            String telefono, String email)
+        public static String Insertar(String nombre, String apellido, long cuil, String razonSocial, long cuit,
+            String telFijo, String telMovil, String email, int tipo, List<string> dir)
         {
-            DClientes clientes = new DClientes();
-            //clientes.Nombre_Cliente = nombre_cliente;
-            //clientes.Apellido_Cliente = apellido_cliente;
-            //clientes.Telefono = telefono;
-            //clientes.Email = email;
+            DClientes cliente = new DClientes();
+            cliente.Nombre = nombre;
+            cliente.Apellido = apellido;
+            cliente.Cuil = cuil;
+            cliente.Razon_Social = razonSocial;
+            cliente.Cuit = cuit;
+            cliente.Telefono_Fijo = telFijo;
+            cliente.Telefono_Movil = telMovil;
+            cliente.Email = email;
+            cliente.Tipo_Cliente = tipo;
 
-            return clientes.Insertar(clientes);
+            return cliente.Insertar(cliente,dir);
         }
 
         //public static String Editar(int parId_Cliente, String parNombre_Cliente, String parNombre_Contacto,

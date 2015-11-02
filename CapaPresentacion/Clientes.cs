@@ -133,6 +133,31 @@ namespace CapaPresentacion
             ListarClientes(2);
             radioButtonEmpresas.Checked = true;
         }
+
+        private void buttonAgregar_Click(object sender, EventArgs e)
+        {
+            FrmAgregarCliente nuevoCliente = new FrmAgregarCliente(this);
+            nuevoCliente.ShowDialog();
+        }
+
+        public void Refrescar()
+        {
+            if (radioButtonEmpresas.Checked)
+            {
+                ListarClientes(2);
+            }
+            else
+            {
+                ListarClientes(1);
+            }
+
+            this.textBoxBuscarNombre.Text = String.Empty;
+        }
+
+        public void Mensaje(String mensaje)
+        {
+            this.labelMensajes.Text = mensaje;
+        }
  
     }
 }
