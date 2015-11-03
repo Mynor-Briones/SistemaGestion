@@ -158,6 +158,54 @@ namespace CapaPresentacion
         {
             this.labelMensajes.Text = mensaje;
         }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.dataGridViewClientes.Rows.Count > 0)
+                {
+                    DialogResult confirmacion = MessageBox.Show("¿Seguro deseas eliminar este cliente?", "Eliminar Cliente",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+                    if (confirmacion == DialogResult.OK)
+                    {
+                        String mensaje = NClientes.Eliminar(Convert.ToInt32(ObtenerSeleccion().Cells["ID"].Value));
+                        if (mensaje == "Y")
+                        {
+                            Mensaje(String.Format("El Cliente {0} ha sido ELIMINADO",
+                                Convert.ToString(ObtenerSeleccion().Cells["NOMBRE"].Value) + " " + ObtenerSeleccion().Cells["APELLIDO"].Value));
+                            Refrescar();
+                        }
+                        else
+                        {
+                            MensajeError(mensaje);
+                            Refrescar();
+                        }
+                    }
+                }
+                else
+                {
+                    MensajeError("Debes seleccionar una fila para eliminar");
+                }
+            }
+            catch (Exception ex)
+            {
+                MensajeError(ex.Message);
+            }
+        }
+
+        public DataGridViewRow ObtenerSeleccion()
+        {
+            DataGridViewRow filaSeleccionada = this.dataGridViewClientes.Rows[this.dataGridViewClientes.CurrentRow.Index];
+            return filaSeleccionada;
+        }
+
+        private void MensajeError(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
  
     }
 }
