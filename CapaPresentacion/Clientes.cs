@@ -73,51 +73,49 @@ namespace CapaPresentacion
         //lista los clientes opcion 1(presonas) 2(empresas)
         public void ListarClientes(int opcion)
         {
-            //this.dataGridViewClientes.DataSource = NClientes.ListarClientes(opcion);
-            //this.dataGridViewClientes.AllowUserToAddRows = false;
+            dataGridViewClientes.AutoGenerateColumns = false;
+            dataGridViewClientes.Columns.Clear();
+
+            dataGridViewClientes.Columns.Add("ID", "ID");
+            dataGridViewClientes.Columns.Add("NOMBRE", "NOMBRE");
+            dataGridViewClientes.Columns.Add("APELLIDO", "APELLIDO");
+            dataGridViewClientes.Columns.Add("CUIL", "CUIL");
+            dataGridViewClientes.Columns.Add("RAZON SOCIAL", "RAZON SOCIAL");
+            dataGridViewClientes.Columns.Add("CUIT", "CUIT");
+            dataGridViewClientes.Columns.Add("TELEFONO FIJO", "TELEFONO FIJO");
+            dataGridViewClientes.Columns.Add("TELEFONO MOVIL", "TELEFONO MOVIL");
+            dataGridViewClientes.Columns.Add("EMAIL", "EMAIL");
+            dataGridViewClientes.Columns.Add("TIPO CLIENTE", "TIPO CLIENTE");
+            dataGridViewClientes.Columns.Add("ID DIRECCION", "ID DIRECCION");
+            dataGridViewClientes.Columns[0].DataPropertyName = "ID";
+            dataGridViewClientes.Columns[1].DataPropertyName = "NOMBRE";
+            dataGridViewClientes.Columns[2].DataPropertyName = "APELLIDO";
+            dataGridViewClientes.Columns[3].DataPropertyName = "CUIL";
+            dataGridViewClientes.Columns[4].DataPropertyName = "RAZON SOCIAL";
+            dataGridViewClientes.Columns[5].DataPropertyName = "CUIT";
+            dataGridViewClientes.Columns[6].DataPropertyName = "TELEFONO FIJO";
+            dataGridViewClientes.Columns[7].DataPropertyName = "TELEFONO MOVIL";
+            dataGridViewClientes.Columns[8].DataPropertyName = "EMAIL";
+            dataGridViewClientes.Columns[9].DataPropertyName = "TIPO CLIENTE";
+            dataGridViewClientes.Columns[10].DataPropertyName = "ID DIRECCION";
 
             if (opcion == 1)
             {
-                dataGridViewClientes.AutoGenerateColumns = false;
-                dataGridViewClientes.Columns.Clear();
-
-                dataGridViewClientes.Columns.Add("ID", "ID");
-                dataGridViewClientes.Columns.Add("NOMBRE", "NOMBRE");
-                dataGridViewClientes.Columns.Add("APELLIDO", "APELLIDO");
-                dataGridViewClientes.Columns.Add("CUIL", "CUIL");
-                dataGridViewClientes.Columns.Add("TELEFONO FIJO", "TELEFONO FIJO");
-                dataGridViewClientes.Columns.Add("TELEFONO MOVIL", "TELEFONO MOVIL");
-                dataGridViewClientes.Columns.Add("EMAIL", "EMAIL");
-                dataGridViewClientes.Columns[0].DataPropertyName = "ID";
-                dataGridViewClientes.Columns[1].DataPropertyName = "NOMBRE";
-                dataGridViewClientes.Columns[2].DataPropertyName = "APELLIDO";
-                dataGridViewClientes.Columns[3].DataPropertyName = "CUIL";
-                dataGridViewClientes.Columns[4].DataPropertyName = "TELEFONO FIJO";
-                dataGridViewClientes.Columns[5].DataPropertyName = "TELEFONO MOVIL";
-                dataGridViewClientes.Columns[6].DataPropertyName = "EMAIL";
-                
-                this.dataGridViewClientes.DataSource = NClientes.ListarClientes(opcion);
+                dataGridViewClientes.Columns[4].Visible = false;
+                dataGridViewClientes.Columns[5].Visible = false;
+                dataGridViewClientes.Columns[9].Visible = false;
+                dataGridViewClientes.Columns[10].Visible = false;                     
             }
             else
             {
-                dataGridViewClientes.AutoGenerateColumns = false;
-                dataGridViewClientes.Columns.Clear();
-
-                dataGridViewClientes.Columns.Add("ID", "ID");
-                dataGridViewClientes.Columns.Add("RAZON SOCIAL", "RAZON SOCIAL");
-                dataGridViewClientes.Columns.Add("CUIT", "CUIT");
-                dataGridViewClientes.Columns.Add("TELEFONO FIJO", "TELEFONO FIJO");
-                dataGridViewClientes.Columns.Add("TELEFONO MOVIL", "TELEFONO MOVIL");
-                dataGridViewClientes.Columns.Add("EMAIL", "EMAIL");
-                dataGridViewClientes.Columns[0].DataPropertyName = "ID";
-                dataGridViewClientes.Columns[1].DataPropertyName = "RAZON SOCIAL";
-                dataGridViewClientes.Columns[2].DataPropertyName = "CUIT";
-                dataGridViewClientes.Columns[3].DataPropertyName = "TELEFONO FIJO";
-                dataGridViewClientes.Columns[4].DataPropertyName = "TELEFONO MOVIL";
-                dataGridViewClientes.Columns[5].DataPropertyName = "EMAIL";
-
-                this.dataGridViewClientes.DataSource = NClientes.ListarClientes(opcion);
+                dataGridViewClientes.Columns[1].Visible = false;
+                dataGridViewClientes.Columns[2].Visible = false;
+                dataGridViewClientes.Columns[3].Visible = false;
+                dataGridViewClientes.Columns[9].Visible = false;
+                dataGridViewClientes.Columns[10].Visible = false;                
             }
+
+            this.dataGridViewClientes.DataSource = NClientes.ListarClientes(opcion);
         }
 
         //buscalo clientes segun el tipo (persona o empresa) y el nombre (nombre o razon social)
@@ -204,6 +202,26 @@ namespace CapaPresentacion
         private void MensajeError(string mensaje)
         {
             MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.dataGridViewClientes.Rows.Count > 0)
+                {
+                    FrmEditarCliente editarCliente = new FrmEditarCliente(this);
+                    editarCliente.ShowDialog();
+                }
+                else
+                {
+                    MensajeError("Debes seleccionar una fila para editar");
+                }
+            }
+            catch (Exception ex)
+            {
+                MensajeError(ex.Message);
+            }
         }
 
  

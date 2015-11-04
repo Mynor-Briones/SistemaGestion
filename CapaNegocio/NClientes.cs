@@ -93,17 +93,22 @@ namespace CapaNegocio
         //    return clientes.Editar(clientes);
         //}
 
-        public static String Editar(int id_cliente, String nombre_cliente, String apellido_cliente,
-            String telefono, String email)
+        public static String Editar(int id_cliente,String nombre, String apellido, long cuil, String razonSocial, long cuit,
+            String telFijo, String telMovil, String email, int tipo, List<string> dir)
         {
-            DClientes clientes = new DClientes();
-            clientes.Id_Cliente = id_cliente;
-            //clientes.Nombre_Cliente = nombre_cliente;
-            //clientes.Apellido_Cliente = apellido_cliente;
-            //clientes.Telefono = telefono;
-            //clientes.Email = email;
+            DClientes cliente = new DClientes();
+            cliente.Id_Cliente = id_cliente;
+            cliente.Nombre = nombre;
+            cliente.Apellido = apellido;
+            cliente.Cuil = cuil;
+            cliente.Razon_Social = razonSocial;
+            cliente.Cuit = cuit;
+            cliente.Telefono_Fijo = telFijo;
+            cliente.Telefono_Movil = telMovil;
+            cliente.Email = email;
+            cliente.Tipo_Cliente = tipo;
 
-            return clientes.Editar(clientes);
+            return cliente.Editar(cliente, dir);
         }
     }
 }

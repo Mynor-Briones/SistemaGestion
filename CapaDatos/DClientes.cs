@@ -60,22 +60,10 @@ namespace CapaDatos
                 SqlCommand SqlComando = new SqlCommand();
                 SqlComando.Connection = SqlConexion;
 
-                string query = "";
-
-                if (opcion == 1)
-                {
-                    query = "SELECT [id_cliente] AS ID, [nombre] AS 'NOMBRE', [apellido] AS 'APELLIDO' " +
+                string query = "SELECT [id_cliente] AS ID, [razon_social] AS 'RAZON SOCIAL', [nombre] AS 'NOMBRE', [apellido] AS 'APELLIDO' " +
                                    ",[telefono_fijo] AS 'TELEFONO FIJO', [telefono_movil] AS 'TELEFONO MOVIL', [email] AS 'EMAIL'" +
-                                   ",[cuil] AS 'CUIL'FROM [BD_Gestion].[dbo].[CLIENTES]" +
-                                   "WHERE [tipo_cliente_id] = " + opcion;
-                }
-                else
-                {
-                    query = "SELECT [id_cliente] AS ID,[razon_social] AS 'RAZON SOCIAL',[telefono_fijo] AS 'TELEFONO FIJO'"+
-                                   ", [telefono_movil] AS 'TELEFONO MOVIL', [email] AS 'EMAIL'" +
-                                   ", [cuit] AS 'CUIT' FROM [BD_Gestion].[dbo].[CLIENTES]" +
-                                   "WHERE [tipo_cliente_id] = " + opcion;
-                }
+                                   ",[cuil] AS 'CUIL', [cuit] AS 'CUIT',[tipo_cliente_id] AS 'TIPO CLIENTE', [direccion_id] AS 'ID DIRECCION' FROM [BD_Gestion].[dbo].[CLIENTES]" +
+                                   "WHERE [tipo_cliente_id] = " + opcion;                
 
                 SqlComando.CommandText = query;
                 SqlComando.CommandType = CommandType.Text;
@@ -566,54 +554,6 @@ namespace CapaDatos
             return Respuesta;
         }
 
-        //public string Eliminar(DClientes parClientes)
-        //{
-        //    string Respuesta = "";
-        //    SqlConnection SqlConexion = new SqlConnection();
-
-        //    try
-        //    {
-        //        SqlConexion.ConnectionString = DConexion.CnBDEmpresa;
-        //        SqlConexion.Open();
-
-        //        SqlCommand SqlComando = new SqlCommand();
-        //        SqlComando.Connection = SqlConexion;
-        //        SqlComando.CommandText = "Ventas.EliminarCliente";
-        //        SqlComando.CommandType = CommandType.StoredProcedure;
-
-        //        SqlParameter ParId_Cliente = new SqlParameter();
-        //        ParId_Cliente.ParameterName = "@Id_Cliente";
-        //        ParId_Cliente.SqlDbType = SqlDbType.Int;
-        //        ParId_Cliente.Value = parClientes.Id_Cliente;
-        //        SqlComando.Parameters.Add(ParId_Cliente);
-
-        //        SqlComando.ExecuteNonQuery();
-        //        Respuesta = "Y";
-        //    }
-
-        //    catch (SqlException ex)
-        //    {
-        //        if (ex.Number == 547)
-        //        {
-        //            Respuesta = "No puedes eliminar un cliente que cuenta con uno o varios Pedidos. Debes eliminar o actualizar sus Pedidos antes de eliminar el cliente.";
-        //        }
-
-        //        else
-        //        {
-        //            Respuesta = "Error al intentar ejecutar el procedimiento almacenado Ventas.EliminarCliente. " + ex.Message;
-        //        }
-        //    }
-
-        //    finally
-        //    {
-        //        if (SqlConexion.State == ConnectionState.Open)
-        //        {
-        //            SqlConexion.Close();
-        //        }
-        //    }
-
-        //    return Respuesta;
-        //}
 
         public string Eliminar(int id)
         {
@@ -659,141 +599,52 @@ namespace CapaDatos
             return Respuesta;
         }
 
-        //public string Editar(DClientes parClientes)
-        //{
-        //    string Respuesta = "";
-        //    SqlConnection SqlConexion = new SqlConnection();
 
-        //    try
-        //    {
-        //        SqlConexion.ConnectionString = DConexion.CnBDEmpresa;
-        //        SqlConexion.Open();
-
-        //        SqlCommand SqlComando = new SqlCommand();
-        //        SqlComando.Connection = SqlConexion;
-        //        SqlComando.CommandText = "Ventas.EditarCliente";
-        //        SqlComando.CommandType = CommandType.StoredProcedure;
-
-        //        SqlParameter ParId_Cliente = new SqlParameter();
-        //        ParId_Cliente.ParameterName = "@Id_Cliente";
-        //        ParId_Cliente.SqlDbType = SqlDbType.Int;
-        //        ParId_Cliente.Value = parClientes.Id_Cliente;
-        //        SqlComando.Parameters.Add(ParId_Cliente);
-
-        //        SqlParameter ParNombre_Cliente = new SqlParameter();
-        //        ParNombre_Cliente.ParameterName = "@Nombre_Cliente";
-        //        ParNombre_Cliente.SqlDbType = SqlDbType.VarChar;
-        //        ParNombre_Cliente.Size = parClientes.Nombre_Cliente.Length;
-        //        ParNombre_Cliente.Value = parClientes.Nombre_Cliente;
-        //        SqlComando.Parameters.Add(ParNombre_Cliente);
-
-        //        SqlParameter ParNombre_Contacto = new SqlParameter();
-        //        ParNombre_Contacto.ParameterName = "@Nombre_Contacto";
-        //        ParNombre_Contacto.SqlDbType = SqlDbType.VarChar;
-        //        ParNombre_Contacto.Size = parClientes.Apellido_Cliente.Length;
-        //        ParNombre_Contacto.Value = parClientes.Apellido_Cliente;
-        //        SqlComando.Parameters.Add(ParNombre_Contacto);
-
-        //        //SqlParameter ParDireccion = new SqlParameter();
-        //        //ParDireccion.ParameterName = "@Direccion";
-        //        //ParDireccion.SqlDbType = SqlDbType.VarChar;
-        //        //ParDireccion.Size = parClientes.Direccion.Length;
-        //        //ParDireccion.Value = parClientes.Direccion;
-        //        //SqlComando.Parameters.Add(ParDireccion);
-
-        //        //SqlParameter ParCiudad = new SqlParameter();
-        //        //ParCiudad.ParameterName = "@Ciudad";
-        //        //ParCiudad.SqlDbType = SqlDbType.VarChar;
-        //        //ParCiudad.Size = parClientes.Ciudad.Length;
-        //        //ParCiudad.Value = parClientes.Ciudad;
-        //        //SqlComando.Parameters.Add(ParCiudad);
-
-        //        //SqlParameter ParRegion = new SqlParameter();
-        //        //ParRegion.ParameterName = "@Region";
-        //        //ParRegion.SqlDbType = SqlDbType.VarChar;
-        //        //ParRegion.Size = parClientes.Region.Length;
-        //        //ParRegion.Value = parClientes.Region;
-        //        //SqlComando.Parameters.Add(ParRegion);
-
-        //        //SqlParameter ParPais = new SqlParameter();
-        //        //ParPais.ParameterName = "@Pais";
-        //        //ParPais.SqlDbType = SqlDbType.VarChar;
-        //        //ParPais.Size = parClientes.Pais.Length;
-        //        //ParPais.Value = parClientes.Pais;
-        //        //SqlComando.Parameters.Add(ParPais);
-
-        //        SqlParameter ParTelefono = new SqlParameter();
-        //        ParTelefono.ParameterName = "@Telefono";
-        //        ParTelefono.SqlDbType = SqlDbType.VarChar;
-        //        ParTelefono.Size = parClientes.Telefono.Length;
-        //        ParTelefono.Value = parClientes.Telefono;
-        //        SqlComando.Parameters.Add(ParTelefono);
-
-        //        //SqlParameter ParFax = new SqlParameter();
-        //        //ParFax.ParameterName = "@Fax";
-        //        //ParFax.SqlDbType = SqlDbType.VarChar;
-        //        //ParFax.Size = parClientes.Fax.Length;
-        //        //ParFax.Value = parClientes.Fax;
-        //        //SqlComando.Parameters.Add(ParFax);
-
-        //        SqlParameter ParEmail = new SqlParameter();
-        //        ParEmail.ParameterName = "@Email";
-        //        ParEmail.SqlDbType = SqlDbType.VarChar;
-        //        ParEmail.Size = parClientes.Email.Length;
-        //        ParEmail.Value = parClientes.Email;
-        //        SqlComando.Parameters.Add(ParEmail);
-
-        //        SqlComando.ExecuteNonQuery();
-        //        Respuesta = "Y";
-        //    }
-
-        //    catch (SqlException ex)
-        //    {
-        //        if (ex.Number == 8152)
-        //        {
-        //            Respuesta = "Has introducido demasiados caracteres en uno de los campos.";
-        //        }
-        //        else if (ex.Number == 2627)
-        //        {
-        //            Respuesta = "Ya existe un cliente con ese Nombre";
-        //        }
-        //        else if (ex.Number == 515)
-        //        {
-        //            Respuesta = "Sólo puedes dejar vacíos los campos Nombre de Contacto, Región, País, Teléfono, Fax y Email";
-        //        }
-        //        else
-        //        {
-        //            Respuesta = "Error al intentar ejecutar el procedimiento almacenado Ventas.EditarCliente. " + ex.Message;
-        //        }
-        //    }
-
-        //    finally
-        //    {
-        //        if (SqlConexion.State == ConnectionState.Open)
-        //        {
-        //            SqlConexion.Close();
-        //        }
-        //    }
-
-        //    return Respuesta;
-        //}
-
-        public string Editar(DClientes cliente)
+        public string Editar(DClientes cliente, List<string> dir)
         {
             string Respuesta = "";
             SqlConnection SqlConexion = new SqlConnection();
+            SqlTransaction transaccion = null;
 
             try
             {
                 SqlConexion.ConnectionString = DConexion.CnBDEmpresa;
                 SqlConexion.Open();
 
+                transaccion = SqlConexion.BeginTransaction();
+
                 SqlCommand SqlComando = new SqlCommand();
+                SqlComando.Transaction = transaccion;
+
                 SqlComando.Connection = SqlConexion;
-                //SqlComando.CommandText = "update Clientes set Nombre_Cliente ='" + cliente.Nombre + "', Apellido_Cliente='" + cliente.Apellido + "', Telefono=" + cliente.Telefono + ",Email='" + cliente.Email + "' where Id_Cliente="+Id_Cliente;
+
                 SqlComando.CommandType = CommandType.Text;
 
+                //direccion
+                //clinte
+                string query = "UPDATE [dbo].[DIRECCIONES] SET [calle]='" + dir[0].ToString() + "', [numero]=" + int.Parse(dir[1].ToString()) +
+                                                 ", [piso]='" + dir[2].ToString() + "', [departamento] ='" + dir[3].ToString() +
+                                                 "',[ciudad]='" + dir[5].ToString() + "',[provincia]='" + dir[6].ToString() +
+                                                 "',[pais]='" + dir[7].ToString() + "',[codigo_postal]=" + dir[4].ToString() + 
+                                                 " where id_direccion=" + int.Parse(dir[8].ToString());
+
+
+                SqlComando.CommandText = query;
                 SqlComando.ExecuteNonQuery();
+
+
+                //clinte
+                query = "UPDATE [dbo].[CLIENTES] SET [nombre]='" + cliente.Nombre + "', [apellido]= '" + cliente.Apellido +
+                                                 "', [razon_social]='" + cliente.Razon_Social + "', [telefono_fijo] ='" + cliente.Telefono_Fijo +
+                                                 "',[telefono_movil]='" + cliente.Telefono_Movil + "',[email]='" + cliente.Email +
+                                                 "',[cuil]=" + cliente.Cuil + ",[cuit]=" + cliente.Cuit +
+                                                 ",[tipo_cliente_id]=" + cliente.Tipo_Cliente + 
+                                                 " where Id_Cliente="+cliente.Id_Cliente;
+
+                SqlComando.CommandText = query;
+                SqlComando.ExecuteNonQuery();
+
+                transaccion.Commit();
                 Respuesta = "Y";
             }
 

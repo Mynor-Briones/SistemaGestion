@@ -59,6 +59,12 @@
     <Compile Include="FrmAgregarCliente.Designer.cs">
       <DependentUpon>FrmAgregarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEditarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditarCliente.Designer.cs">
+      <DependentUpon>FrmEditarCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">
+      <Project>{de60f155-5696-4f43-a72e-fb8df66f8e0e}</Project>
+      <Name>CapaDatos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj">
       <Project>{d7b22cf7-07d7-4f15-a70e-54dff41f717b}</Project>
       <Name>CapaNegocio</Name>
@@ -105,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAgregarCliente.resx">
       <DependentUpon>FrmAgregarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditarCliente.resx">
+      <DependentUpon>FrmEditarCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmInicio.resx">
       <DependentUpon>FrmInicio.cs</DependentUpon>
