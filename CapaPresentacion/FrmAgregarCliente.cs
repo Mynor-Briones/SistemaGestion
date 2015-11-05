@@ -89,6 +89,31 @@ namespace CapaPresentacion
             MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void radioButtonPersona_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonPersona.Checked)
+            {
+                this.textBoxNombre.Enabled = true;
+                this.textBoxApellido.Enabled = true;
+                this.textBoxCuil.Enabled = true;
+                this.textBoxRazonSocial.Enabled = false;
+                this.textBoxCuit.Enabled = false;
+                this.textBoxRazonSocial.Text = "";
+                this.textBoxCuit.Text = "";
+            }
+            else
+            {
+                this.textBoxNombre.Enabled = false;
+                this.textBoxApellido.Enabled = false;
+                this.textBoxCuil.Enabled = false;
+                this.textBoxRazonSocial.Enabled = true;
+                this.textBoxCuit.Enabled = true;
+                this.textBoxNombre.Text = "";
+                this.textBoxApellido.Text = "";
+                this.textBoxCuil.Text = "";     
+            }
+        }
+
 
     }
 }

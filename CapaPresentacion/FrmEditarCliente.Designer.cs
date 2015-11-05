@@ -194,6 +194,7 @@
             this.radioButtonPersona.TabStop = true;
             this.radioButtonPersona.Text = "Persona";
             this.radioButtonPersona.UseVisualStyleBackColor = true;
+            this.radioButtonPersona.CheckedChanged += new System.EventHandler(this.radioButtonPersona_CheckedChanged);
             // 
             // groupBox2
             // 

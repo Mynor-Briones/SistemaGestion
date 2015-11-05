@@ -163,7 +163,17 @@ namespace CapaPresentacion
             {
                 if (this.dataGridViewClientes.Rows.Count > 0)
                 {
-                    DialogResult confirmacion = MessageBox.Show("¿Seguro deseas eliminar este cliente?", "Eliminar Cliente",
+                    string nombre;
+
+                    if (radioButtonPersonas.Checked)
+                    {
+                        nombre = ObtenerSeleccion().Cells["NOMBRE"].Value + "" + ObtenerSeleccion().Cells["APELLIDO"].Value;
+                    }
+                    else
+                    {
+                        nombre = ObtenerSeleccion().Cells["RAZON SOCIAL"].Value.ToString();
+                    }
+                    DialogResult confirmacion = MessageBox.Show("¿Seguro deseas eliminar al cliente "+nombre+"?", "Eliminar Cliente",
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
 
                     if (confirmacion == DialogResult.OK)
@@ -222,6 +232,12 @@ namespace CapaPresentacion
             {
                 MensajeError(ex.Message);
             }
+        }
+
+        private void buttonReportesClientes_Click(object sender, EventArgs e)
+        {
+            FrmReporteClientes reporte = new FrmReporteClientes();
+            reporte.ShowDialog();
         }
 
  
